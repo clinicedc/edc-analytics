@@ -29,19 +29,13 @@ class RowStatistics:
         self.rowprop = self.count / self.total if self.count else 0.0
 
         # numeric stats (9)
-        if (
-            colname
-            and not df_numerator.empty
-            and is_numeric_dtype(df_numerator[colname])
-        ):
+        if colname and not df_numerator.empty and is_numeric_dtype(df_numerator[colname]):
             stats = df_numerator[colname].describe()
             self.mean = stats.loc["mean"]
             self.sd = stats.loc["std"]
             self.min = stats.loc["min"]
             self.max = stats.loc["max"]
-            self.q25, self.q50, self.q75 = df_numerator[colname].quantile(
-                [0.25, 0.50, 0.75]
-            )
+            self.q25, self.q50, self.q75 = df_numerator[colname].quantile([0.25, 0.50, 0.75])
             stats = df_numerator[colname].agg(["mean", "sem"])
             self.ci95l = stats.loc["mean"] - 1.96 * stats.loc["sem"]
             self.ci95h = stats.loc["mean"] + 1.96 * stats.loc["sem"]

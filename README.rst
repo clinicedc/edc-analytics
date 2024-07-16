@@ -1,4 +1,9 @@
-# edc-analytics
+|pypi| |downloads|
+
+
+edc-analytics
+-------------
+
 Build analytic tables from EDC data
 
 
@@ -62,3 +67,9 @@ Like any dataframe, you can export to csv:
     table_df.to_csv(path_or_buf=path, encoding="utf-8", index=0, sep="|")
 
 
+
+.. |pypi| image:: https://img.shields.io/pypi/v/edc-analytics.svg
+   :target: https://pypi.python.org/pypi/edc-analytics
+
+.. |downloads| image:: https://pepy.tech/badge/edc-analytics
+   :target: https://pepy.tech/project/edc-analytics

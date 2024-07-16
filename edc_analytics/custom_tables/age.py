@@ -34,19 +34,11 @@ class AgeTable(Table):
         bin2 = (df_tmp[self.colname] >= 35) & (df_tmp[self.colname] < 50)
         bin3 = (df_tmp[self.colname] >= 50) & (df_tmp[self.colname] < 65)
         bin4 = df_tmp[self.colname] >= 65
+        row_defs.add(RowDefinition(label="18-34", condition=bin1, columns=columns, drop=False))
+        row_defs.add(RowDefinition(label="35-49", condition=bin2, columns=columns, drop=False))
+        row_defs.add(RowDefinition(label="50-64", condition=bin3, columns=columns, drop=False))
         row_defs.add(
-            RowDefinition(label="18-34", condition=bin1, columns=columns, drop=False)
-        )
-        row_defs.add(
-            RowDefinition(label="35-49", condition=bin2, columns=columns, drop=False)
-        )
-        row_defs.add(
-            RowDefinition(label="50-64", condition=bin3, columns=columns, drop=False)
-        )
-        row_defs.add(
-            RowDefinition(
-                label="65 and older", condition=bin4, columns=columns, drop=False
-            )
+            RowDefinition(label="65 and older", condition=bin4, columns=columns, drop=False)
         )
         if len(df_tmp[df_tmp[self.colname].isna()]) > 0:
             row_defs.add(

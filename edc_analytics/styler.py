@@ -47,15 +47,11 @@ class Styler:
         """
         col_value = "no style"
         if self.style == N_WITH_ROW_PROP:
-            col_value = (
-                f"{self.row.count} ({round(self.row.rowprop * 100, self.places)}%)"
-            )
+            col_value = f"{self.row.count} ({round(self.row.rowprop * 100, self.places)}%)"
         elif self.style == N_ONLY:
             col_value = f"{self.row.count}"
         elif self.style == N_WITH_COL_PROP:
-            col_value = (
-                f"{self.row.count} ({round(self.row.colprop * 100, self.places)}%)"
-            )
+            col_value = f"{self.row.count} ({round(self.row.colprop * 100, self.places)}%)"
         elif self.style == N_RANGE:
             col_value = f"{self.row.count} ({self.row.min}, {self.row.max})"
         elif self.style == N_MEAN:
@@ -76,7 +72,9 @@ class Styler:
                 f"({round(self.row.min, self.places)}, {round(self.row.max, self.places)})"
             )
         elif self.style == MEAN_SD:
-            col_value = f"{round(self.row.mean, self.places)} ({round(self.row.sd, self.places)})"
+            col_value = (
+                f"{round(self.row.mean, self.places)} ({round(self.row.sd, self.places)})"
+            )
         elif self.style == MEAN_95CI:
             col_value = (
                 f"{round(self.row.mean, self.places)} "

@@ -43,8 +43,7 @@ class BpTable(Table):
             RowDefinition(
                 label="Severe hypertension (>=180/110)",
                 condition=(
-                    (df_tmp[self.sys_col_name] >= 180)
-                    | (df_tmp[self.dia_col_name] >= 110)
+                    (df_tmp[self.sys_col_name] >= 180) | (df_tmp[self.dia_col_name] >= 110)
                 ),
                 columns=columns,
                 drop=True,
@@ -54,8 +53,7 @@ class BpTable(Table):
             RowDefinition(
                 label="Hypertension (>=140/90)",
                 condition=(
-                    (df_tmp[self.sys_col_name] >= 140)
-                    | (df_tmp[self.dia_col_name] >= 90)
+                    (df_tmp[self.sys_col_name] >= 140) | (df_tmp[self.dia_col_name] >= 90)
                 ),
                 columns=columns,
                 drop=True,
@@ -65,8 +63,7 @@ class BpTable(Table):
             RowDefinition(
                 label="Pre-hypertension (<140/90)",
                 condition=(
-                    (df_tmp[self.sys_col_name] >= 120)
-                    | (df_tmp[self.dia_col_name] >= 80)
+                    (df_tmp[self.sys_col_name] >= 120) | (df_tmp[self.dia_col_name] >= 80)
                 ),
                 columns=columns,
                 drop=True,
@@ -76,8 +73,7 @@ class BpTable(Table):
             RowDefinition(
                 label="Normal (<120/80)",
                 condition=(
-                    (df_tmp[self.sys_col_name] >= 90)
-                    | (df_tmp[self.dia_col_name] >= 60)
+                    (df_tmp[self.sys_col_name] >= 90) | (df_tmp[self.dia_col_name] >= 60)
                 ),
                 columns=columns,
                 drop=True,
@@ -97,8 +93,7 @@ class BpTable(Table):
             RowDefinition(
                 label="not measured",
                 condition=(
-                    (df_tmp[self.sys_col_name].isna())
-                    & (df_tmp[self.dia_col_name].isna())
+                    (df_tmp[self.sys_col_name].isna()) & (df_tmp[self.dia_col_name].isna())
                 ),
                 columns=columns,
                 drop=True,

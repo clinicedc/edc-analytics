@@ -53,9 +53,7 @@ class WaistCircumferenceTable(Table):
         )
         cond_gte_102 = (
             (self.main_df[self.colname] >= 102.0) & (self.main_df["gender"] == "Male")
-        ) | (
-            (self.main_df[self.colname] >= 88.0) & (self.main_df["gender"] == "Female")
-        )
+        ) | ((self.main_df[self.colname] >= 88.0) & (self.main_df["gender"] == "Female"))
         row_defs.add(
             RowDefinition(
                 colname=self.colname,

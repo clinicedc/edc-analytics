@@ -18,13 +18,9 @@ class RowDefinition:
         self.label = label
         self.colname = colname
         self.condition = condition  # condition to filter DF
-        self.drop = (
-            False if drop is None else drop
-        )  # drop index of previous row numerator
+        self.drop = False if drop is None else drop  # drop index of previous row numerator
         self.columns = columns or {"All": (N_WITH_ROW_PROP, 2)}
         for col, style_info in self.columns.items():
             style, _ = style_info
             if style not in STATISTICS:
-                raise StylerError(
-                    f"Unknown statistic. Got `{style}` for column `{col}`."
-                )
+                raise StylerError(f"Unknown statistic. Got `{style}` for column `{col}`.")

@@ -58,8 +58,7 @@ class HbA1cTable(Table):
                 colname=self.colname,
                 label="≥6.0 and ≤6.4",
                 condition=(
-                    (self.main_df[self.colname] >= 6.0)
-                    & (self.main_df[self.colname] <= 6.4)
+                    (self.main_df[self.colname] >= 6.0) & (self.main_df[self.colname] <= 6.4)
                 ),
                 columns=columns,
                 drop=False,

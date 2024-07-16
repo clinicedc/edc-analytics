@@ -110,9 +110,7 @@ class FbgOgttTable1(Table):
             )
         )
 
-        condition = (df_tmp[self.fbg_colname].notna()) & (
-            df_tmp[self.ogtt_colname].notna()
-        )
+        condition = (df_tmp[self.fbg_colname].notna()) & (df_tmp[self.ogtt_colname].notna())
         row_defs.add(
             RowDefinition(
                 colname=self.colname,
@@ -123,9 +121,7 @@ class FbgOgttTable1(Table):
             )
         )
 
-        condition = (df_tmp[self.fbg_colname].notna()) & (
-            df_tmp[self.ogtt_colname].isna()
-        )
+        condition = (df_tmp[self.fbg_colname].notna()) & (df_tmp[self.ogtt_colname].isna())
         row_defs.add(
             RowDefinition(
                 colname=self.colname,
@@ -135,9 +131,7 @@ class FbgOgttTable1(Table):
                 drop=True,
             )
         )
-        condition = (df_tmp[self.fbg_colname].isna()) & (
-            df_tmp[self.ogtt_colname].notna()
-        )
+        condition = (df_tmp[self.fbg_colname].isna()) & (df_tmp[self.ogtt_colname].notna())
         row_defs.add(
             RowDefinition(
                 colname=self.colname,
@@ -147,9 +141,7 @@ class FbgOgttTable1(Table):
                 drop=True,
             )
         )
-        condition = (df_tmp[self.fbg_colname].isna()) & (
-            df_tmp[self.ogtt_colname].isna()
-        )
+        condition = (df_tmp[self.fbg_colname].isna()) & (df_tmp[self.ogtt_colname].isna())
         row_defs.add(
             RowDefinition(
                 colname=self.colname,

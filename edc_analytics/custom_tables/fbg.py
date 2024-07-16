@@ -7,9 +7,7 @@ from ..table import Table
 
 class FbgTable(Table):
     def __init__(self, main_df: pd.DataFrame = None):
-        super().__init__(
-            colname="fbg", main_df=main_df, title="FBG (mmol/L) categories"
-        )
+        super().__init__(colname="fbg", main_df=main_df, title="FBG (mmol/L) categories")
 
     @property
     def row_definitions(self) -> RowDefinitions:

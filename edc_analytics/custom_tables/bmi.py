@@ -52,8 +52,7 @@ class BmiTable(Table):
             RowDefinition(
                 colname="calculated_bmi_value",
                 label="18.5-24.9",
-                condition=(df_tmp[self.colname] >= 18.5)
-                & (df_tmp[self.colname] < 25.0),
+                condition=(df_tmp[self.colname] >= 18.5) & (df_tmp[self.colname] < 25.0),
                 columns=columns,
                 drop=False,
             )
@@ -62,8 +61,7 @@ class BmiTable(Table):
             RowDefinition(
                 colname="calculated_bmi_value",
                 label="25.0-29.9",
-                condition=(df_tmp[self.colname] >= 25.0)
-                & (df_tmp[self.colname] < 30.0),
+                condition=(df_tmp[self.colname] >= 25.0) & (df_tmp[self.colname] < 30.0),
                 columns=columns,
                 drop=False,
             )
@@ -72,8 +70,7 @@ class BmiTable(Table):
             RowDefinition(
                 colname="calculated_bmi_value",
                 label="30.0-39.9",
-                condition=(df_tmp[self.colname] >= 30.0)
-                & (df_tmp[self.colname] < 40.0),
+                condition=(df_tmp[self.colname] >= 30.0) & (df_tmp[self.colname] < 40.0),
                 columns=columns,
                 drop=False,
             )
