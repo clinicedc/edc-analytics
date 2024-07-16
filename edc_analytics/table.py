@@ -56,7 +56,7 @@ class Table:
         pass
 
     def build_table_df(self) -> None:
-        """Returns a dictionary of dataframes"""
+        """Build the table_df using the row definitions."""
         df_denominator = self.main_df.copy()
         rows = []
         for index, rd in enumerate(self.row_definitions.definitions):

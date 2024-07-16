@@ -1,3 +1,3 @@
-from .custom_tables import BpTable
 from .row import RowDefinition, RowStatistics, RowStatisticsWithGender
+from .styler import Styler
 from .table import Table
