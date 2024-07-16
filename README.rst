@@ -39,7 +39,7 @@ In the ``Table`` instance,
 * ``data_df`` is the supporting dataframe
 * ``table_df`` is table to display. The ``table_df`` displays formatted data in the first 5 columns ("Characteristic", "Statistic", "F", "M", "All"). The ``table_df`` has additional columns that contain the statistics used for the statistics displayed in columns ["F", "M", "All"].
 
-``Table``.``table_df`` is just a dataframe and can be combined with other ``table_df`` dataframes using ``pd.concat()`` to make a single table_df.
+Form above, ``gender_tbl.table_df`` is just a dataframe and can be combined with other ``table_df`` dataframes using ``pd.concat()`` to make a single table_df.
 
 .. code-block:: python
 
@@ -60,4 +60,5 @@ Like any dataframe, you can export to csv:
 
     path = "my/path/to/csv/folder/table_df.csv"
     table_df.to_csv(path_or_buf=path, encoding="utf-8", index=0, sep="|")
+
 
