@@ -25,6 +25,8 @@ class StylerError(Exception):
 
 
 class Styler:
+    """A class to format statistics per the format label given."""
+
     def __init__(
         self,
         style: str = None,
