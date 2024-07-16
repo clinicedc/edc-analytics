@@ -42,7 +42,7 @@ Pass the dataframe to each ``Table`` class
 In the ``Table`` instance,
 
 * ``data_df`` is the supporting dataframe
-* ``table_df`` is table to display. The ``table_df`` displays formatted data in the first 5 columns ("Characteristic", "Statistic", "F", "M", "All"). The ``table_df`` has additional columns that contain the statistics used for the statistics displayed in columns ["F", "M", "All"].
+* ``table_df`` is the dataframe to display. The ``table_df`` displays formatted data in the first 5 columns ("Characteristic", "Statistic", "F", "M", "All"). The ``table_df`` has additional columns that contain the statistics used for the statistics displayed in columns ["F", "M", "All"].
 
 From above, ``gender_tbl.table_df`` is just a dataframe and can be combined with other ``table_df`` dataframes using ``pd.concat()`` to make a single table_df.
 
