@@ -1,4 +1,12 @@
 # Byte-compiled / optimized / DLL files
+_version.py
+django_crypto_fields
+.settings
+.project
+.pydevproject
+test-*
+db.sqlite3
+
 __pycache__/
 *.py[cod]
 *$py.class
