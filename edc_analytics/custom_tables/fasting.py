@@ -6,10 +6,15 @@ from ..table import Table
 
 
 class FastingFbgTable(Table):
-    def __init__(self, main_df: pd.DataFrame = None):
-        super().__init__(
-            colname="fasting_fbg_hrs", main_df=main_df, title="Fasting duration (hrs)"
-        )
+    def __init__(
+        self,
+        main_df: pd.DataFrame = None,
+        colname: str | None = None,
+        title: str | None = None,
+    ):
+        colname = colname or "fasting_fbg_hrs"
+        title = title or "Fasting duration (hrs)"
+        super().__init__(colname=colname, main_df=main_df, title=title)
 
     @property
     def row_definitions(self) -> RowDefinitions:
