@@ -1,4 +1,5 @@
 import pandas as pd
+from edc_constants.constants import FEMALE, MALE
 
 from ..constants import MEDIAN_RANGE, N_ONLY, N_WITH_COL_PROP, N_WITH_ROW_PROP
 from ..row import RowDefinition, RowDefinitions
@@ -18,16 +19,16 @@ class AgeTable(Table):
             label=self.default_sublabel,
             condition=(df_tmp["gender"].notna()),
             columns={
-                "F": (N_ONLY, 2),
-                "M": (N_ONLY, 2),
+                FEMALE: (N_ONLY, 2),
+                MALE: (N_ONLY, 2),
                 "All": (N_ONLY, 2),
             },
             drop=False,
         )
         row_defs.add(row0)
         columns = {
-            "F": (N_WITH_COL_PROP, 2),
-            "M": (N_WITH_COL_PROP, 2),
+            FEMALE: (N_WITH_COL_PROP, 2),
+            MALE: (N_WITH_COL_PROP, 2),
             "All": (N_WITH_ROW_PROP, 2),
         }
         bin1 = (df_tmp[self.colname] >= 18) & (df_tmp[self.colname] < 35)
@@ -51,8 +52,8 @@ class AgeTable(Table):
                 )
             )
         columns = {
-            "F": (MEDIAN_RANGE, 2),
-            "M": (MEDIAN_RANGE, 2),
+            FEMALE: (MEDIAN_RANGE, 2),
+            MALE: (MEDIAN_RANGE, 2),
             "All": (MEDIAN_RANGE, 2),
         }
         row_defs.add(
