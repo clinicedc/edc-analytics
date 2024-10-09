@@ -1,22 +1,32 @@
 import pandas as pd
+from edc_constants.constants import FEMALE, MALE
 
 from .row_statistics import RowStatistics
+
+
+class RowStatisticsError(Exception):
+    pass
 
 
 class RowStatisticsFemale(RowStatistics):
     def __init__(
         self,
-        female_value: str = None,
         df_numerator: pd.DataFrame = None,
         df_denominator: pd.DataFrame = None,
         **kwargs,
     ):
-        female_value = female_value or "Female"
         if not df_numerator.empty:
-            df_numerator = df_numerator.loc[df_numerator["gender"] == female_value]
+            if not df_numerator["gender"].isnull().all():
+                if (
+                    df_numerator[df_numerator["gender"].notna()].count()
+                    != df_numerator["gender"].value_counts()[FEMALE]
+                ):
+                    raise RowStatisticsError(
+                        f"Expected Gender as a category of [{FEMALE}, {MALE}]. Expected `{FEMALE}`."
+                    )
         super().__init__(
             df_numerator=df_numerator,
-            df_denominator=df_denominator.loc[df_denominator["gender"] == female_value],
+            df_denominator=df_denominator,
             **kwargs,
         )
 
@@ -24,17 +34,22 @@ class RowStatisticsFemale(RowStatistics):
 class RowStatisticsMale(RowStatistics):
     def __init__(
         self,
-        male_value: str = None,
         df_numerator: pd.DataFrame = None,
         df_denominator: pd.DataFrame = None,
         **kwargs,
     ):
-        male_value = male_value or "Male"
         if not df_numerator.empty:
-            df_numerator = df_numerator.loc[df_numerator["gender"] == male_value]
+            if not df_numerator["gender"].isnull().all():
+                if (
+                    df_numerator[df_numerator["gender"].notna()].count()
+                    != df_numerator["gender"].value_counts()[MALE]
+                ):
+                    raise RowStatisticsError(
+                        f"Expected Gender as a category of [{FEMALE}, {MALE}]. Expected `{MALE}`."
+                    )
         super().__init__(
             df_numerator=df_numerator,
-            df_denominator=df_denominator.loc[df_denominator["gender"] == male_value],
+            df_denominator=df_denominator,
             **kwargs,
         )
 
@@ -58,15 +73,17 @@ class RowStatisticsWithGender(RowStatistics):
                is "F", "M" or "All"
         :param gender_values: dict of {gender_label: gender_value} where
                gender_label is "F" or "M"
+
+        Note: the default df["gender"] is "M" or "F".
         """
 
-        female_style, female_places = columns["F"]
-        male_style, male_places = columns["M"]
+        female_style, female_places = columns[FEMALE]
+        male_style, male_places = columns[MALE]
         all_style, all_places = columns["All"]
 
-        gender_values = gender_values or {"M": "Male", "F": "Female"}
-        female_value = gender_values["F"]
-        male_value = gender_values["M"]
+        # gender_values = gender_values or {"M": "Male", "F": "Female"}
+        # female_value = gender_values["F"]
+        # male_value = gender_values["M"]
 
         super().__init__(
             places=all_places,
@@ -77,18 +94,16 @@ class RowStatisticsWithGender(RowStatistics):
         )
 
         self.m = RowStatisticsMale(
-            male_value=male_value,
             places=male_places,
             style=male_style,
-            coltotal=len(df_all[df_all["gender"] == male_value]),
+            coltotal=len(df_all[df_all["gender"] == MALE]),
             df_all=df_all,
             **kwargs,
         )
         self.f = RowStatisticsFemale(
-            female_value=female_value,
             places=female_places,
             style=female_style,
-            coltotal=len(df_all[df_all["gender"] == female_value]),
+            coltotal=len(df_all[df_all["gender"] == FEMALE]),
             df_all=df_all,
             **kwargs,
         )

@@ -1,4 +1,5 @@
 import pandas as pd
+from edc_constants.constants import FEMALE, MALE
 
 from .constants import COUNT_COLUMN, N_ONLY, N_WITH_ROW_PROP, TITLE_COLUMN
 from .row import RowDefinition, RowDefinitions, RowStatisticsWithGender
@@ -42,8 +43,8 @@ class Table:
                 colname=None,
                 condition=(self.main_df["gender"].notna()),
                 columns={
-                    "F": (N_WITH_ROW_PROP, 2),
-                    "M": (N_WITH_ROW_PROP, 2),
+                    FEMALE: (N_WITH_ROW_PROP, 2),
+                    MALE: (N_WITH_ROW_PROP, 2),
                     "All": (N_ONLY, 2),
                 },
                 drop=False,
