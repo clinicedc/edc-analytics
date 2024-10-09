@@ -22,7 +22,8 @@ class RowStatisticsFemale(RowStatistics):
                     != df_numerator["gender"].value_counts()[FEMALE]
                 ):
                     raise RowStatisticsError(
-                        f"Expected Gender as a category of [{FEMALE}, {MALE}]. Expected `{FEMALE}`."
+                        f"Expected Gender as a category of [{FEMALE}, {MALE}]. "
+                        f"Expected `{FEMALE}`."
                     )
         super().__init__(
             df_numerator=df_numerator,
@@ -45,7 +46,8 @@ class RowStatisticsMale(RowStatistics):
                     != df_numerator["gender"].value_counts()[MALE]
                 ):
                     raise RowStatisticsError(
-                        f"Expected Gender as a category of [{FEMALE}, {MALE}]. Expected `{MALE}`."
+                        f"Expected Gender as a category of [{FEMALE}, {MALE}]. "
+                        f"Expected `{MALE}`."
                     )
         super().__init__(
             df_numerator=df_numerator,
