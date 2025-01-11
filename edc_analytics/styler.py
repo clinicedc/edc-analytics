@@ -48,7 +48,10 @@ class Styler:
         """
         col_value = "no style"
         if self.style == N_WITH_ROW_PROP:
-            col_value = f"{self.row.count} ({round(self.row.rowprop * 100, self.places):.{self.places}f}%)"
+            col_value = (
+                f"{self.row.count} ("
+                f"{round(self.row.rowprop * 100, self.places):.{self.places}f}%)"
+            )
         elif self.style == N_ONLY:
             col_value = f"{self.row.count}"
         elif self.style == N_WITH_COL_PROP:
@@ -61,7 +64,8 @@ class Styler:
         elif self.style == MEDIAN_IQR:
             col_value = (
                 f"{round(self.row.q50, self.places):.{self.places}f} "
-                f"({round(self.row.q25, self.places)},{round(self.row.q75, self.places):.{self.places}f})"
+                f"({round(self.row.q25, self.places)},"
+                f"{round(self.row.q75, self.places):.{self.places}f})"
             )
         elif self.style == MEDIAN_RANGE:
             col_value = (
