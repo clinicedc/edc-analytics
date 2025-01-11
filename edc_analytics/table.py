@@ -10,7 +10,8 @@ class Table:
     title_column = "Characteristics"
     label_column = "Statistic"
     default_sublabel = "n"
-    row_cls: RowStatisticsWithGender = RowStatisticsWithGender
+    gender_column = "gender"
+    row_statistics_cls: RowStatisticsWithGender = RowStatisticsWithGender
 
     def __init__(
         self,
@@ -34,14 +35,19 @@ class Table:
 
     @property
     def row_definitions(self) -> RowDefinitions:
-        """Override with your RowDefs"""
-        row_defs = RowDefinitions(colname=self.colname, row_cls=self.row_cls)
+        """Override with your RowDefs
+
+        The default adds a first row with gender breakdown.
+        """
+        row_defs = RowDefinitions(
+            colname=self.colname, row_statistics_cls=self.row_statistics_cls
+        )
         row_defs.add(
             RowDefinition(
                 title=self.title,
                 label=self.default_sublabel,
                 colname=None,
-                condition=(self.main_df["gender"].notna()),
+                condition=(self.main_df[self.gender_column].notna()),
                 columns={
                     FEMALE: (N_WITH_ROW_PROP, 2),
                     MALE: (N_WITH_ROW_PROP, 2),
@@ -68,7 +74,7 @@ class Table:
                 df_numerator = df_denominator.loc[
                     df_denominator[df_denominator.columns[0]].notna()
                 ]
-            row_stats = self.row_cls(
+            row_stats = self.row_statistics_cls(
                 colname=rd.colname,
                 df_numerator=df_numerator,
                 df_denominator=df_denominator,

@@ -7,7 +7,7 @@ N_MEAN = "n_mean"
 N_ONLY = "n_only"
 N_RANGE = "n_range"
 N_WITH_COL_PROP = "n_with_col_prop"
-N_WITH_ROW_PROP = "n_with_row_prop"
+N_WITH_ROW_PROP: str = "n_with_row_prop"
 
 COUNT_COLUMN = "count"
 TITLE_COLUMN = "title"
