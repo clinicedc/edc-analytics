@@ -15,16 +15,7 @@ class RowStatisticsFemale(RowStatistics):
         df_denominator: pd.DataFrame = None,
         **kwargs,
     ):
-        if not df_numerator.empty:
-            if not df_numerator["gender"].isnull().all():
-                if (
-                    df_numerator[df_numerator["gender"].notna()].count()
-                    != df_numerator["gender"].value_counts()[FEMALE]
-                ):
-                    raise RowStatisticsError(
-                        f"Expected Gender as a category of [{FEMALE}, {MALE}]. "
-                        f"Expected `{FEMALE}`."
-                    )
+        df_numerator = df_numerator.loc[df_numerator["gender"] == FEMALE]
         super().__init__(
             df_numerator=df_numerator,
             df_denominator=df_denominator,
@@ -39,16 +30,7 @@ class RowStatisticsMale(RowStatistics):
         df_denominator: pd.DataFrame = None,
         **kwargs,
     ):
-        if not df_numerator.empty:
-            if not df_numerator["gender"].isnull().all():
-                if (
-                    df_numerator[df_numerator["gender"].notna()].count()
-                    != df_numerator["gender"].value_counts()[MALE]
-                ):
-                    raise RowStatisticsError(
-                        f"Expected Gender as a category of [{FEMALE}, {MALE}]. "
-                        f"Expected `{MALE}`."
-                    )
+        df_numerator = df_numerator.loc[df_numerator["gender"] == MALE]
         super().__init__(
             df_numerator=df_numerator,
             df_denominator=df_denominator,
@@ -60,7 +42,6 @@ class RowStatisticsWithGender(RowStatistics):
     def __init__(
         self,
         columns: dict[str, tuple[str, int]] = None,
-        gender_values: dict[str, str] = None,
         df_all: pd.DataFrame = None,
         coltotal: float | int | None = None,
         **kwargs,
@@ -73,8 +54,6 @@ class RowStatisticsWithGender(RowStatistics):
         :param df_all:
         :param columns: dict of {col: (style name, places)} where col
                is "F", "M" or "All"
-        :param gender_values: dict of {gender_label: gender_value} where
-               gender_label is "F" or "M"
 
         Note: the default df["gender"] is "M" or "F".
         """
@@ -82,10 +61,6 @@ class RowStatisticsWithGender(RowStatistics):
         female_style, female_places = columns[FEMALE]
         male_style, male_places = columns[MALE]
         all_style, all_places = columns["All"]
-
-        # gender_values = gender_values or {"M": "Male", "F": "Female"}
-        # female_value = gender_values["F"]
-        # male_value = gender_values["M"]
 
         super().__init__(
             places=all_places,

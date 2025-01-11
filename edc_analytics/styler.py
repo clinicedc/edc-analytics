@@ -10,7 +10,6 @@ from .constants import (
     MEDIAN_RANGE,
     N_MEAN,
     N_ONLY,
-    N_RANGE,
     N_WITH_COL_PROP,
     N_WITH_ROW_PROP,
     STATISTICS,
@@ -35,7 +34,7 @@ class Styler:
     ):
         self.style = style
         self.row = statistics
-        self.places = places or 2
+        self.places = places if places is not None else 2
         if style not in STATISTICS:
             raise StylerError(f"Unknown style. Got `{style}`.")
 
@@ -49,37 +48,46 @@ class Styler:
         """
         col_value = "no style"
         if self.style == N_WITH_ROW_PROP:
-            col_value = f"{self.row.count} ({round(self.row.rowprop * 100, self.places)}%)"
+            col_value = (
+                f"{self.row.count} ("
+                f"{round(self.row.rowprop * 100, self.places):.{self.places}f}%)"
+            )
         elif self.style == N_ONLY:
             col_value = f"{self.row.count}"
         elif self.style == N_WITH_COL_PROP:
-            col_value = f"{self.row.count} ({round(self.row.colprop * 100, self.places)}%)"
-        elif self.style == N_RANGE:
-            col_value = f"{self.row.count} ({self.row.min}, {self.row.max})"
+            col_value = (
+                f"{self.row.count:.{self.places}f} "
+                f"({round(self.row.colprop * 100, self.places):.{self.places}f}%)"
+            )
         elif self.style == N_MEAN:
-            col_value = f"{round(self.row.mean, self.places)}"
+            col_value = f"{round(self.row.mean, self.places):.{self.places}f}"
         elif self.style == MEDIAN_IQR:
             col_value = (
-                f"{round(self.row.q50, self.places)} "
-                f"({round(self.row.q25, self.places)},{round(self.row.q75, self.places)})"
+                f"{round(self.row.q50, self.places):.{self.places}f} "
+                f"({round(self.row.q25, self.places)},"
+                f"{round(self.row.q75, self.places):.{self.places}f})"
             )
         elif self.style == MEDIAN_RANGE:
             col_value = (
-                f"{round(self.row.q50, self.places)} "
-                f"({round(self.row.min, self.places)}, {round(self.row.max, self.places)})"
+                f"{round(self.row.q50, self.places):.{self.places}f} "
+                f"({round(self.row.min, self.places):.{self.places}f}, "
+                f"{round(self.row.max, self.places):.{self.places}f})"
             )
         elif self.style == MEAN_RANGE:
             col_value = (
-                f"{round(self.row.mean, self.places)} "
-                f"({round(self.row.min, self.places)}, {round(self.row.max, self.places)})"
+                f"{round(self.row.mean, self.places):.{self.places}f} "
+                f"({round(self.row.min, self.places):.{self.places}f}, "
+                f"{round(self.row.max, self.places):.{self.places}f})"
             )
         elif self.style == MEAN_SD:
             col_value = (
-                f"{round(self.row.mean, self.places)} ({round(self.row.sd, self.places)})"
+                f"{round(self.row.mean, self.places):.{self.places}f} "
+                f"({round(self.row.sd, self.places):.{self.places}f})"
             )
         elif self.style == MEAN_95CI:
             col_value = (
-                f"{round(self.row.mean, self.places)} "
-                f"({round(self.row.ci95l, self.places)}, {round(self.row.ci95h, self.places)})"
+                f"{round(self.row.mean, self.places):.{self.places}f} "
+                f"({round(self.row.ci95l, self.places):.{self.places}f}, "
+                f"{round(self.row.ci95h, self.places):.{self.places}f})"
             )
         return col_value

@@ -14,6 +14,23 @@ class RowDefinition:
         columns: dict[str, tuple[str, int]] = None,
         drop: bool | None = None,
     ):
+        """
+        A row definition is passed by Table to the RowStatistics
+        class.
+
+        :param title:
+        :param label:
+        :param colname:
+        :param condition:
+        :param columns: dictionary of label: (statistic, places)=
+            {
+                FEMALE: (N_WITH_ROW_PROP, 2),
+                MALE: (N_WITH_ROW_PROP, 2),
+                "All": (N_ONLY, 2),
+            }
+        :param drop: drops rows from the source dataframe once used by
+          the row definition.
+        """
         self.title = title or ""
         self.label = label
         self.colname = colname

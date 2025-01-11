@@ -5,10 +5,10 @@ import sys
 
 import django
 
-app_name = "edc_appointment"
+app_name = "edc_analytics"
 
 if __name__ == "__main__":
-    os.environ["DJANGO_SETTINGS_MODULE"] = f"{app_name}.tests.test_settings"
+    os.environ["DJANGO_SETTINGS_MODULE"] = "tests.test_settings"
     django.setup()
     from django.test.runner import DiscoverRunner
 

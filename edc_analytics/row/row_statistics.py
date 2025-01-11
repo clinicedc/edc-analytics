@@ -7,6 +7,10 @@ from ..styler import Styler
 
 
 class RowStatistics:
+    """A class that calculates descriptive statistics for an
+    indictor.
+    """
+
     def __init__(
         self,
         colname: str = None,
@@ -17,10 +21,10 @@ class RowStatistics:
         style: str | None = None,
         places: int | None = None,
     ):
-        self.places = places or 2
+        self.places = 2 if places is None else places
         self.style = style or N_ONLY
 
-        # counts (6)
+        # counts (6 columns)
         self.count = 0.0 if df_numerator.empty else len(df_numerator)
         self.total = len(df_all)
         self.coltotal = coltotal or len(df_denominator)
@@ -28,7 +32,7 @@ class RowStatistics:
         self.colprop = self.count / self.coltotal if self.count else 0.0
         self.rowprop = self.count / self.total if self.count else 0.0
 
-        # numeric stats (9)
+        # numeric stats (9 columns)
         if colname and not df_numerator.empty and is_numeric_dtype(df_numerator[colname]):
             stats = df_numerator[colname].describe()
             self.mean = stats.loc["mean"]
