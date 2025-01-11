@@ -10,7 +10,6 @@ from .constants import (
     MEDIAN_RANGE,
     N_MEAN,
     N_ONLY,
-    N_RANGE,
     N_WITH_COL_PROP,
     N_WITH_ROW_PROP,
     STATISTICS,

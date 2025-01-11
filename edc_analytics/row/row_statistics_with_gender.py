@@ -1,8 +1,5 @@
-from dataclasses import dataclass, field
-
 import pandas as pd
 from edc_constants.constants import FEMALE, MALE
-from intecomm_rando.constants import COMMUNITY_ARM, FACILITY_ARM
 
 from .row_statistics import RowStatistics
 

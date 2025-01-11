@@ -3,15 +3,7 @@ from django.test import TestCase
 from edc_constants.constants import FEMALE, MALE
 
 from edc_analytics import RowStatisticsWithGender
-from edc_analytics.constants import (
-    COUNT_COLUMN,
-    MEAN_RANGE,
-    MEDIAN_IQR,
-    MEDIAN_RANGE,
-    N_ONLY,
-    N_RANGE,
-    N_WITH_ROW_PROP,
-)
+from edc_analytics.constants import COUNT_COLUMN, MEAN_RANGE, MEDIAN_IQR, MEDIAN_RANGE
 from edc_analytics.row.row_statistics import RowStatistics
 
 
