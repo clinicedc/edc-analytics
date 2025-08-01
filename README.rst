@@ -9,7 +9,7 @@ Build analytic tables from EDC data
 
 
 Overview
--------
+--------
 
 Read your data into a dataframe, for example an EDC screening table:
 
