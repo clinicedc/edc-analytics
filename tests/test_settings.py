@@ -14,7 +14,7 @@ project_settings = DefaultTestSettings(
     DEBUG=True,
     BASE_DIR=base_dir,
     APP_NAME=app_name,
-    ETC_DIR=base_dir / "etc",
+    ETC_DIR=base_dir / "tests" / "etc",
     INSTALLED_APPS=[
         "django.contrib.admin",
         "django.contrib.auth",

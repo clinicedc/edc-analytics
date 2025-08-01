@@ -1,13 +1,15 @@
-|pypi| |downloads|
+|pypi| |downloads| |clinicedc|
 
 
-# edc-analytics
+edc-analytics
+=============
 
 
 Build analytic tables from EDC data
 
 
-## Overview
+Overview
+-------
 
 Read your data into a dataframe, for example an EDC screening table:
 
@@ -74,9 +76,11 @@ Like any dataframe, you can export to csv:
     table_df.to_csv(path_or_buf=path, encoding="utf-8", index=0, sep="|")
 
 
-## Details
+Details
+-------
 
-### Assumptions
+Assumptions
++++++++++++
 
 The default table assumes:
 
@@ -93,24 +97,26 @@ If a table is stratified by gender, then the formatted row for "Age" might be li
 
 
 
+.. code-block:: text
 
-
-| Characteristic | Statistic | F     | M    | All  |
-|:---------------|:----------| -----: | ----: | ----: |
-| Age (years)    | n         |  1175 | 1000 | 2175 |
-|                | 18-34     |    70 |   64 |  134 |
-|         | ...etc ||||
+    | Characteristic | Statistic | F      | M     | All  |
+    |:---------------|:----------| -----: | ----: | ----:|
+    | Age (years)    | n         |  1175  | 1000  | 2175 |
+    |                | 18-34     |    70  |   64  |  134 |
+    |                | ...etc    |        |       |      |
 
 
 
 contains a collection of `RowDefinitions`
 
 
-### Stratification
+Stratification
+++++++++++++++
 
 
-## Putting together a table
 
+Putting together a table
+------------------------
 
 RowDefinitions
 ++++++++++++++
@@ -121,10 +127,12 @@ To build a table use the `Table` class and override the `build_defs` method. For
 
 
 
-
-
 .. |pypi| image:: https://img.shields.io/pypi/v/edc-analytics.svg
    :target: https://pypi.python.org/pypi/edc-analytics
 
 .. |downloads| image:: https://pepy.tech/badge/edc-analytics
    :target: https://pepy.tech/project/edc-analytics
+
+.. |clinicedc| image:: https://img.shields.io/badge/framework-Clinic_EDC-green
+   :alt:Made with clinicedc
+   :target: https://github.com/clinicedc
