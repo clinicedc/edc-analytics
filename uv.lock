@@ -670,7 +670,7 @@ wheels = [
 
 [[package]]
 name = "edc-analytics"
-version = "1.0.2"
+version = "1.0.1"
 source = { editable = "." }
 dependencies = [
     { name = "arrow" },
