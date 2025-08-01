@@ -8,7 +8,8 @@ edc-analytics
 Build analytic tables from EDC data
 
 
-## Overview
+Overview
+-------
 
 Read your data into a dataframe, for example an EDC screening table:
 
@@ -75,9 +76,11 @@ Like any dataframe, you can export to csv:
     table_df.to_csv(path_or_buf=path, encoding="utf-8", index=0, sep="|")
 
 
-## Details
+Details
+-------
 
-### Assumptions
+Assumptions
++++++++++++
 
 The default table assumes:
 
@@ -107,11 +110,13 @@ If a table is stratified by gender, then the formatted row for "Age" might be li
 contains a collection of `RowDefinitions`
 
 
-### Stratification
+Stratification
+++++++++++++++
 
 
-## Putting together a table
 
+Putting together a table
+------------------------
 
 RowDefinitions
 ++++++++++++++
