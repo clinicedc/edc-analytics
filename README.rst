@@ -100,7 +100,7 @@ If a table is stratified by gender, then the formatted row for "Age" might be li
 .. code-block:: text
 
     | Characteristic | Statistic | F      | M     | All  |
-    |:---------------|:----------| -----: | ----: | ----:|
+    ======================================================
     | Age (years)    | n         |  1175  | 1000  | 2175 |
     |                | 18-34     |    70  |   64  |  134 |
     |                | ...etc    |        |       |      |
