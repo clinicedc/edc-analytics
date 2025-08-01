@@ -11,10 +11,7 @@ namespace = false
 name = "edc-analytics"
 version = "1.0.2"
 description = "Build analytical tables for clinicedc/edc projects"
-readme = "README.rst"
-license = "GPL-3.0-or-later"
-license-files = ["LICEN[CS]E*"]
-requires-python = ">=3.12,<3.14"
+readme = {file = "README.rst", content-type = "text/x-rst"}
 authors = [
     { name = "Erik van Widenfelt", email = "ew2789@gmail.com" },
 ]
@@ -42,6 +39,9 @@ classifiers = [
 dependencies = [
     "arrow",
 ]
+license = "GPL-3.0-or-later"
+license-files = ["LICEN[CS]E*"]
+requires-python = ">=3.12,<3.14"
 
 [project.urls]
 Homepage = "https://github.com/clinicedc/edc-analytics"
