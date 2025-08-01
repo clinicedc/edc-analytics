@@ -9,7 +9,7 @@ namespace = false
 
 [project]
 name = "edc-analytics"
-version = "1.0.1"
+version = "1.0.2"
 description = "Build analytical tables for clinicedc/edc projects"
 readme = {file = "README.rst", content-type = "text/x-rst"}
 authors = [
